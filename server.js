@@ -5,6 +5,7 @@ const connectDB = require('./config/db')
 const adminRoutes = require('./routes/adminRoutes')
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
 
 dotenv.config()
 const app = express()
@@ -18,11 +19,12 @@ app.use(express.json())
 app.use("/api/admin", adminRoutes);
 app.use("/api/subscribe", subscriptionRoutes);
 app.use("/api/service", serviceRoutes);
+app.use("/api/payment", paymentRoutes);
 
 
 //DataBase setup
 connectDB();
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000   
 app.listen(PORT, ()=>{
     console.log("server running");
     
